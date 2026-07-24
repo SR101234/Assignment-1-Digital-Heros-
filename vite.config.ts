@@ -17,12 +17,12 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
-      // ADDED: Allow Render host to connect
-      allowedHosts: ['assignment-1-digital-heros.onrender.com'],
+      // Bypass host check entirely for Render
+      allowedHosts: true,
     },
-    // ADDED: Allow Render host for production preview
     preview: {
-      allowedHosts: ['assignment-1-digital-heros.onrender.com'],
+      // Bypass host check entirely for Render
+      allowedHosts: true,
     }
   };
 });
