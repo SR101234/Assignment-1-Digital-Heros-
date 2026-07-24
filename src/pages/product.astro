@@ -1,0 +1,198 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const productEntry = await getEntry('pages', 'product');
+
+if (!productEntry) {
+  throw new Error('Product page entry missing from content collection src/content/pages/product.md');
+}
+
+const { title, description, keywords, hero, stats, featuresHeading, features, testimonial, ctaBanner } = productEntry.data;
+const { Content } = await render(productEntry);
+
+// SoftwareApplication Schema.org JSON-LD
+const softwareApplicationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'NexFlow Automation Core',
+  operatingSystem: 'Linux, macOS, Windows, Kubernetes, AWS, GCP, Azure',
+  applicationCategory: 'BusinessApplication',
+  description: description,
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'USD',
+    lowPrice: '39',
+    highPrice: '499',
+    offerCount: '3',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '1240',
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  schemaJsonLd={softwareApplicationSchema}
+>
+  <!-- Hero Header -->
+  <section class="bg-neutral-950 pt-12 pb-20 text-white lg:pt-20 lg:pb-28 border-b border-neutral-800 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-neutral-800/20 via-transparent to-transparent">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          {hero.badge && (
+            <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              {hero.badge}
+            </span>
+          )}
+
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white leading-tight">
+            {hero.title}{' '}
+            {hero.highlightTitle && (
+              <span class="text-neutral-500 italic block sm:inline">
+                {hero.highlightTitle}
+              </span>
+            )}
+          </h1>
+
+          <p class="mt-6 text-lg text-neutral-400 leading-relaxed max-w-2xl">
+            {hero.subtitle}
+          </p>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={hero.primaryCta.href}
+              class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3.5 text-base font-bold text-neutral-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 active:scale-95"
+            >
+              {hero.primaryCta.text}
+            </a>
+            {hero.secondaryCta && (
+              <a
+                href={hero.secondaryCta.href}
+                class="inline-flex items-center justify-center rounded-full border border-neutral-800 bg-neutral-900 px-6 py-3.5 text-base font-medium text-neutral-300 hover:bg-neutral-800 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+              >
+                {hero.secondaryCta.text}
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- Eager Loaded Image with explicit dimensions -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-2 shadow-2xl">
+            <img
+              src={hero.image.src}
+              alt={hero.image.alt}
+              width={hero.image.width}
+              height={hero.image.height}
+              loading="eager"
+              fetchpriority="high"
+              class="w-full h-auto rounded-xl object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Benchmarks Section -->
+  {stats && (
+    <section class="bg-neutral-900 text-white py-12 border-b border-neutral-800" aria-label="Performance Benchmarks">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+          {stats.map((stat) => (
+            <div class="text-center md:text-left">
+              <p class="text-3xl font-extrabold text-white tracking-tight">{stat.value}</p>
+              <p class="mt-1 text-xs font-bold uppercase tracking-wider text-neutral-400">{stat.label}</p>
+              {stat.description && <p class="mt-0.5 text-xs text-neutral-500">{stat.description}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Deep Architecture Pillars -->
+  {featuresHeading && features && (
+    <section id="specs" class="py-20 bg-neutral-950" aria-labelledby="product-arch-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-400">{featuresHeading.eyebrow}</p>
+          <h2 id="product-arch-heading" class="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
+            {featuresHeading.title}
+          </h2>
+          <p class="mt-4 text-neutral-400">{featuresHeading.subtitle}</p>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {features.map((feat) => (
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-sm flex flex-col justify-between hover:border-neutral-700 transition-colors">
+              <div>
+                <div class="flex items-center justify-between">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  </div>
+                  {feat.badge && (
+                    <span class="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-bold text-emerald-400">
+                      {feat.badge}
+                    </span>
+                  )}
+                </div>
+
+                <h3 class="mt-6 text-xl font-bold text-white">{feat.title}</h3>
+                <p class="mt-2 text-sm text-neutral-400 leading-relaxed">{feat.description}</p>
+              </div>
+
+              {feat.metrics && (
+                <div class="mt-6 border-t border-neutral-800 pt-4 text-xs font-bold text-emerald-400">
+                  Specification: {feat.metrics}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Detailed Markdown Content -->
+  <section class="py-16 bg-neutral-900 border-t border-neutral-800">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 prose prose-invert prose-emerald">
+      <Content />
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  {testimonial && (
+    <section class="py-16 bg-neutral-950 text-white border-t border-neutral-800">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xl font-medium text-neutral-200 italic">"{testimonial.quote}"</p>
+        <p class="mt-6 font-bold text-emerald-400">{testimonial.author}</p>
+        <p class="text-xs text-neutral-400">{testimonial.role}, {testimonial.company}</p>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Banner -->
+  {ctaBanner && (
+    <section class="py-16 bg-neutral-900 text-white text-center border-t border-neutral-800">
+      <div class="mx-auto max-w-4xl px-4">
+        <h2 class="text-3xl font-extrabold text-white">{ctaBanner.title}</h2>
+        <p class="mt-3 text-neutral-400">{ctaBanner.subtitle}</p>
+        <a
+          href={ctaBanner.buttonHref}
+          class="mt-6 inline-block rounded-full bg-emerald-500 px-8 py-3.5 text-sm font-bold text-neutral-950 shadow-md hover:bg-emerald-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+        >
+          {ctaBanner.buttonText}
+        </a>
+      </div>
+    </section>
+  )}
+</BaseLayout>

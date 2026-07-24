@@ -1,0 +1,21 @@
+{
+  "id": "pro",
+  "name": "Growth Pro",
+  "tagline": "Built for scaling technology companies and high-volume operations.",
+  "priceMonthly": 199,
+  "priceAnnual": 159,
+  "currency": "$",
+  "popular": true,
+  "ctaText": "Start Pro Trial",
+  "ctaHref": "/contact?plan=pro",
+  "features": [
+    { "name": "Up to 5,000,000 monthly workflow executions", "included": true },
+    { "name": "25 Parallel worker threads", "included": true },
+    { "name": "24/7 Priority Support with 1-hour SLA", "included": true },
+    { "name": "90-day immutable audit log retention", "included": true },
+    { "name": "300+ Native Enterprise & Kafka connectors", "included": true },
+    { "name": "SOC2 Type II & HIPAA compliance reports", "included": true },
+    { "name": "Single Sign-On (SAML / Okta / Azure AD)", "included": true },
+    { "name": "Air-gapped on-premise installation", "included": false }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "faq-2",
+  "question": "What happens if we exceed our monthly execution quota?",
+  "answer": "NexFlow does not hard-cap your pipelines or drop events during unexpected traffic spikes. We issue soft email warnings when you reach 85% and 100% of your tier, allowing you to upgrade seamlessly or pay a flat prorated fee per million executions.",
+  "category": "Billing",
+  "featured": true
+}

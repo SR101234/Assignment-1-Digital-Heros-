@@ -1,0 +1,21 @@
+{
+  "id": "starter",
+  "name": "Developer Starter",
+  "tagline": "Ideal for startups, individual engineers, and staging environments.",
+  "priceMonthly": 49,
+  "priceAnnual": 39,
+  "currency": "$",
+  "popular": false,
+  "ctaText": "Start Free Trial",
+  "ctaHref": "/contact?plan=starter",
+  "features": [
+    { "name": "Up to 500,000 monthly workflow executions", "included": true },
+    { "name": "3 Parallel worker threads", "included": true },
+    { "name": "Community Slack & Email support", "included": true },
+    { "name": "7-day audit log retention", "included": true },
+    { "name": "Standard REST & Webhook connectors", "included": true },
+    { "name": "SOC2 Type II compliance reports", "included": false },
+    { "name": "Custom SLA & dedicated IP addresses", "included": false },
+    { "name": "Single Sign-On (SAML / Okta)", "included": false }
+  ]
+}

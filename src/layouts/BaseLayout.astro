@@ -1,0 +1,61 @@
+---
+import SEO from '../components/SEO.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../index.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  keywords?: string[];
+  schemaJsonLd?: string | object | object[];
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  ogImage,
+  ogType,
+  keywords,
+  schemaJsonLd,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-neutral-950 text-neutral-200 antialiased selection:bg-emerald-500 selection:text-neutral-950">
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      canonicalURL={canonicalURL}
+      ogImage={ogImage}
+      ogType={ogType}
+      keywords={keywords}
+      schemaJsonLd={schemaJsonLd}
+    />
+  </head>
+  <body class="flex min-h-screen flex-col bg-neutral-950 font-sans text-neutral-200">
+    <!-- Accessible Skip to Main Content Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-emerald-500 focus:px-4 focus:py-2.5 focus:text-sm focus:font-bold focus:text-neutral-950 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-neutral-950 shadow-xl transition-all"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Header Navigation Shell -->
+    <Navbar />
+
+    <!-- Main Landmark Content -->
+    <main id="main-content" class="flex-1 focus:outline-none" tabindex="-1">
+      <slot />
+    </main>
+
+    <!-- Footer Shell -->
+    <Footer />
+  </body>
+</html>

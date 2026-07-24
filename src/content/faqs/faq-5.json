@@ -1,0 +1,7 @@
+{
+  "id": "faq-5",
+  "question": "How does sub-millisecond execution latency compare to traditional iPaaS solutions?",
+  "answer": "Traditional iPaaS engines rely on interpreted scripting runtimes with heavy garbage collection overhead (50ms - 500ms latency). NexFlow uses a compiled Rust engine with lock-free ring buffers, executing transformations in under 1.2 milliseconds.",
+  "category": "Technology",
+  "featured": true
+}

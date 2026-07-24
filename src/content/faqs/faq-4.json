@@ -1,0 +1,7 @@
+{
+  "id": "faq-4",
+  "question": "Is NexFlow SOC2 Type II and HIPAA compliant?",
+  "answer": "Yes. NexFlow undergoes annual third-party audits for SOC2 Type II, ISO 27001, and HIPAA compliance. We sign Business Associate Agreements (BAAs) with Enterprise customers upon request.",
+  "category": "Security",
+  "featured": true
+}

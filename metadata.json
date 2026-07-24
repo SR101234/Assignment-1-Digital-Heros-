@@ -1,0 +1,6 @@
+{
+  "name": "B2B Marketing Website",
+  "description": "4-page B2B marketing website built with Astro, Tailwind CSS, and Content Collections",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

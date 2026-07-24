@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "priceMonthly": {
+      "type": "number"
+    },
+    "priceAnnual": {
+      "type": "number"
+    },
+    "currency": {
+      "default": "$",
+      "type": "string"
+    },
+    "popular": {
+      "default": false,
+      "type": "boolean"
+    },
+    "ctaText": {
+      "type": "string"
+    },
+    "ctaHref": {
+      "type": "string"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "included": {
+            "type": "boolean"
+          },
+          "tooltip": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "included"
+        ]
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "tagline",
+    "priceMonthly",
+    "priceAnnual",
+    "ctaText",
+    "ctaHref",
+    "features"
+  ]
+}

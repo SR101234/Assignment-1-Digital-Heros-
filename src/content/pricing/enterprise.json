@@ -1,0 +1,21 @@
+{
+  "id": "enterprise",
+  "name": "Custom Enterprise",
+  "tagline": "Tailored infrastructure, dedicated cloud VPCs, and financially backed SLAs.",
+  "priceMonthly": 599,
+  "priceAnnual": 499,
+  "currency": "$",
+  "popular": false,
+  "ctaText": "Contact Sales",
+  "ctaHref": "/contact?plan=enterprise",
+  "features": [
+    { "name": "Unlimited monthly workflow executions", "included": true },
+    { "name": "Unlimited dedicated edge nodes", "included": true },
+    { "name": "Dedicated Solutions Engineer & Slack connect channel", "included": true },
+    { "name": "7-year custom compliance log archiving", "included": true },
+    { "name": "Custom connector development on-demand", "included": true },
+    { "name": "Financially backed 99.999% uptime SLA", "included": true },
+    { "name": "Single Sign-On & Custom RBAC roles", "included": true },
+    { "name": "Air-gapped on-premise & AWS VPC deployment", "included": true }
+  ]
+}

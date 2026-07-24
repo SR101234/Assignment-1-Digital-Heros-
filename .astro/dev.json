@@ -1,0 +1,16 @@
+{
+	"pid": 2488,
+	"port": 3000,
+	"url": "http://localhost:3000",
+	"urls": {
+		"local": [
+			"http://localhost:3000/"
+		],
+		"network": [
+			"http://192.168.56.1:3000/",
+			"http://192.168.1.35:3000/"
+		]
+	},
+	"background": false,
+	"startedAt": "2026-07-24T19:30:00.483Z"
+}
